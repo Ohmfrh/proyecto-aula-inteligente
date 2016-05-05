@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  <style>
+    .top-buffer { margin-top:32px; }
+  </style>
+  <h1 class="title">Música</h1>
+  <div class="row">
+    <div class="col-md-5 left">
+      <div class="row"><h2>Lista de usuarios</h2></div>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-default" onclick="showSongList()">Lista de canciones</button>
+        </div>
+      </div>
+      <div class="row">
+        <table>
+          <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Editar</th>
+          </tr>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.name }} {{ user.last_names }}</td>
+              <td>{{ user.date_added }}</td>
+              <td><a href="#"><img src="{% static 'img/music.png' %}"  onclick="showUserSongs(this.name)" name="{{ user.pk }}"></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-6 right">
+      <div class="row"><h2>Sección</h2></div>
+      <div id="full-song-list" class="toggle-class" hidden>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-default" onclick="addNewSong()">Agregar canción</button>
+          </div>
+        </div>
+
+        <div class="row toggle-class" id="add-new-song" hidden>
+          <div class="col-md-6">
+            {% crispy add_song_form %}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <table>
+              <thead>
+              <tr>
+                <th>Canción</th>
+                <th>Servidor</th>
+                <th>Localización</th>
+                <th>Editar</th>
+              </tr>
+              </thead>
+              <tbody id="full-song-table">
+              {% for song in songs %}
+                <tr>
+                  <td>{{ song.name }}</td>
+                  <td>{{ song.server }}</td>
+                  <td>{{ song.path }}</td>
+                  <td><a href="#"><img src="{% static 'img/edit.png' %}"  onclick="editSong(this.name)" name="{{ song.pk }}"></a></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-12 top-buffer">
+
+        </div>
+      </div>
+
+      <div id="edit-song" class="toggle-class" hidden>
+        <div class="row">
+          <div class="col-md-12">
+            {% crispy edit_song_form %}
+          </div>
+        </div>
+      </div>
+
+      <div id="user-song-list" class="toggle-class" hidden>
+        <div class="row">
+          <div class="col-md-12">
+            {% crispy assign_song_form %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/canciones.js' %}"></script>
+{% endblock %}

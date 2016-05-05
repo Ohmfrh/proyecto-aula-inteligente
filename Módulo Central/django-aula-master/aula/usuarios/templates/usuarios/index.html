@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  <h1 class="title">Usuarios</h1>
+  <div class="row">
+    <div class="col-md-5 left">
+      <div class="row"><h2>Lista de usuarios</h2></div>
+      <div class="row">
+        <table>
+          <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha</th>
+            <th>correo</th>
+            <th>Editar</th>
+          </tr>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.name }}</td>
+              <td>{{ user.last_names }}</td>
+              <td>{{ user.date_added }}</td>
+              <td>{{ user.email }}</td>
+              <td><a href="#"><img src="{% static 'img/edit.png' %}" name="{{ user.pk }}" onclick="editUser(this.name)"></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-6 right">
+      <div class="row"><h2>Agregar nuevo usuario</h2></div>
+      <div class="row" id="edit-user" hidden>
+        <div class="col-md-6">
+            {% crispy edit_form %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            {% crispy form %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/usuarios.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/simple-sidebar.css' %}">
+</head>
+
+<body>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">Aula inteligente</a>
+      </li>
+      <div class="menu">
+        <li class="brightness">
+          <a href="{% url 'home:index' %}"><img src="{% static 'img/homealt.png' %}"><span>Dashboard</span></a>
+        </li>
+        <li class="brightness">
+          <a href="{% url 'usuarios:index' %}"><img src="{% static 'img/usersalt.png' %}"><span>Usuarios</span></a>
+        </li>
+        <li class="brightness">
+          <a href="{% url 'identificacion:index' %}"><img src="{% static 'img/signsalt.png' %}"><span>Identificación</span></a>
+        </li>
+        <li class="brightness">
+          <a href="{% url 'musica:index' %}"><img src="{% static 'img/musicalt.png' %}"><span>Música</span></a>
+        </li>
+        <li class="brightness">
+          <a href="{% url 'imagenes:index' %}"><img src="{% static 'img/imagesalt.png' %}"><span>Imágenes</span></a>
+        </li>
+        <li class="brightness">
+          <a href="{% url 'multimedia:index' %}"><img src="{% static 'img/serveralt.png' %}"><span>Servidor</span></a>
+        </li>
+        <li class="logout">
+          <a href="/" class="brightness"><img src="{% static 'img/logoutalt.png' %}"><span>Logout</span></a>
+        </li>
+      </div>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 notes">
+          {% block header %}
+
+          {% endblock %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 content">
+          {% block content %}
+
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{% block modal_title %}{% endblock %}</h4>
+      </div>
+      <div class="modal-body">
+        {% block modal_body %}
+
+        {% endblock %}
+        <button type="submit" class="edit-id btn" onclick="send()">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="{% static 'js/jquery-1.12.3.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

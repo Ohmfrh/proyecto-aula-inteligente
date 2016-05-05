@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  <style>
+    .top-buffer { margin-top:32px; }
+  </style>
+  <h1 class="title">Imágenes</h1>
+  <div class="row">
+    <div class="col-md-5 left">
+      <div class="row"><h2>Lista de usuarios</h2></div>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-default" onclick="showImageList()">Lista de imágenes</button>
+        </div>
+      </div>
+      <div class="row">
+        <table>
+          <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Editar</th>
+          </tr>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.name }} {{ user.last_names }}</td>
+              <td>{{ user.date_added }}</td>
+              <td><a href="#"><img src="{% static 'img/images.png' %}"  onclick="showUserImages(this.name)" name="{{ user.pk }}"></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-6 right">
+      <div class="row"><h2>Sección</h2></div>
+      <div id="full-image-list" class="toggle-class" hidden>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-default" onclick="addNewImage()">Agregar imagen</button>
+          </div>
+        </div>
+
+        <div class="row toggle-class" id="add-new-image" hidden>
+          <div class="col-md-6">
+            {% crispy add_image_form %}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <table>
+              <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Servidor</th>
+                <th>Localización</th>
+                <th>Editar</th>
+              </tr>
+              </thead>
+              <tbody id="full-image-table">
+              {% for image in images %}
+                <tr>
+                  <td>{{ image.name }}</td>
+                  <td>{{ image.server }}</td>
+                  <td>{{ image.path }}</td>
+                  <td><a href="#"><img src="{% static 'img/edit.png' %}"  onclick="editImage(this.name)" name="{{ image.pk }}"></a></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 top-buffer">
+
+        </div>
+      </div>
+      <div class="row toggle-class" id="edit-image" hidden>
+        <div class="col-md-12">
+          {% crispy edit_image_form %}
+        </div>
+      </div>
+      <div id="user-image-list" class="toggle-class" hidden>
+        <div class="row">
+          <div class="col-md-12">
+            {% crispy assign_image_form %}
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/imagenes.js' %}"></script>
+{% endblock %}

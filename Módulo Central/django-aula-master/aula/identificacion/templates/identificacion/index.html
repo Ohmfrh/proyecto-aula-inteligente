@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h1 class="title">Identificación</h1>
+  <div class="row">
+    <div class="col-md-5 left">
+      <div class="row"><h2>Lista de usuarios</h2></div>
+      <div class="row">
+        <table>
+          <tbody>
+          <tr>
+            <th>Usuario</th>
+            <th>Llaves</th>
+            <th>Editar</th>
+          </tr>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.name }} {{ user.last_names }}</td>
+              <td>
+                {% if user.identify_set.all %}
+                  <ul>
+                    {% for id in user.identify_set.all %}
+                      <li>{{ id.type }}: {{ id.string }}</li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  No hay llaves asignadas
+                {% endif %}
+              </td>
+              <td><img id="{{ user.id }}" class="edit-id" src="{% static 'img/edit.png' %}"></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-6 right">
+      <div class="row"><h2>Modificaciones</h2></div>
+      <div class="row">
+        <div class="col-md-8">
+          {% crispy form %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block modal_body %}
+  <div id="edit-id-content"></div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/identificacion.js' %}"></script>
+{% endblock %}

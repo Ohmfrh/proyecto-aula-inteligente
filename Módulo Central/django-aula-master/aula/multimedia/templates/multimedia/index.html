@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h1 class="title">Servidor Multimedia</h1>
+  <div class="row">
+    <div class="col-md-5 left">
+      <div class="row"><h2>Lista de servidores</h2></div>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-default" onclick="addServer()">Agregar Servidor</button>
+        </div>
+      </div>
+      <div class="row">
+        <table>
+          <tbody>
+          <tr>
+            <th>Dirección</th>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+            <th>Editar</th>
+          </tr>
+          {% for server in servers %}
+            <tr>
+              <td>{{ server.address }}</td>
+              <td>{{ server.user }}</td>
+              <td>{{ server.password }}</td>
+              <td><a href="#"><img src="{% static 'img/edit.png' %}" onclick="editServer(this.name)" name="{{ server.pk }}"></a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-6 right">
+      <div class="row"><h2>Modificaciones</h2></div>
+      <div class="row">
+        <div class="col-md-6">
+          <div id="new-server-form" class="hide-class" hidden>
+            {% crispy form %}
+          </div>
+          <div id="edit-server-form" class="hide-class" hidden>
+
+            {% crispy formEdit %}
+{#            <a id="delete-server" href="#" class="pull-right"  onclick="deleteServer(this.name)" name="">Eliminar servidor<img src="{% static 'img/delete.png' %}" name="{{ server.pk }}"></a>#}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/multimediaServer.js' %}"></script>
+{% endblock %}

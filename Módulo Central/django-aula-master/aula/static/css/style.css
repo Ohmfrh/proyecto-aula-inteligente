@@ -1,0 +1,71 @@
+.logout {
+    padding-top: 100px;
+}
+
+.menu li {
+    margin-top: 30px;
+}
+
+.menu li span {
+    margin-left: 15px;
+    font-size: 18px;
+    color: white;
+}
+
+.brightness {
+    -webkit-filter: brightness(0.7);
+    filter: brightness(0.5);
+}
+
+.brightness:hover {
+    -webkit-filter: brightness(1);
+    filter: brightness(0.5);
+}
+
+.notes {
+    /*min-height: 1000px;*/
+    height: 40px;
+    background: black;
+    margin-left: -25px;
+    margin-top: -20px;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+}
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.content {
+    padding: 50px;
+}
+
+.title {
+    margin-left: -30px;
+}
+
+.edit-id {
+    text-align: center;
+    cursor: pointer;
+}
+#myModal{
+    position: absolute;
+    right: 10%;
+    height: 500px;
+    top: 60%;
+    margin-top: -250px;
+}
