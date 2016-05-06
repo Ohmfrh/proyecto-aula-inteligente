@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+
+<html>
+
+
+<head>
+
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>-->
+    <script src="jquery-local.js"></script>
+    <script src="index.js"></script>
+    <script src="carousel.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="carousel.css">
+
+</head>
+
+
+<body>
+
+
+<div id="header">
+    <p id="title">Aula Inteligente</p>
+
+</div>
+
+
+<div id="content">
+
+
+    <!--<img src="img/landscape.jpg" id="content-image">-->
+
+
+    <div id="myCarousel" class="carousel slide container" data-ride="carousel">
+
+        <div class="carousel-inner" id="carousel-inner-container">
+
+            <!--<div class="item active imagen-carousel">-->
+                <!--<img src="img/dark_side_of_the_moon.png" class="img-responsive center-block"/>-->
+            <!--</div>-->
+
+            <!--<div class="item imagen-carousel">-->
+                <!--<img src="img/elton_john.jpg" class= "img-responsive center-block"/>-->
+            <!--</div>-->
+
+
+            <!--<div class="item imagen-carousel">-->
+                <!--<img src="img/landscape.jpg" class="img-responsive center-block"/>-->
+            <!--</div>-->
+
+
+            <!--<div class="item imagen-carousel">-->
+                <!--<img src="img/what_went_down.jpg" class="img-responsive center-block"/>-->
+            <!--</div>-->
+
+
+        </div>
+
+    </div>
+
+
+    <!--<div id="test-name">-->
+        <!--<input type="text" id="input-name"/>-->
+        <!--<button id="send">-->
+            <!--Enter-->
+        <!--</button>-->
+        <!--<button id="exit">-->
+            <!--Exit-->
+        <!--</button>-->
+    <!--</div>-->
+
+
+    <!--<div id="test-song">-->
+        <!--<input type="text" id="input-song-name"/>-->
+        <!--<button id="enter-song">-->
+            <!--Enter Song-->
+        <!--</button>-->
+        <!--<button id="remove-song">-->
+            <!--Remove Song-->
+        <!--</button>-->
+    <!--</div>-->
+
+
+    <!--<button id="enter-david">-->
+        <!--Enter David-->
+    <!--</button>-->
+
+    <!--<button id="exit-david">-->
+        <!--Exit David-->
+    <!--</button>-->
+
+    <!--<button id="enter-daniel">-->
+        <!--Enter Daniel-->
+    <!--</button>-->
+
+    <!--<button id="exit-daniel">-->
+        <!--Exit Daniel-->
+    <!--</button>-->
+
+    <!--<button id="enter-charly">-->
+        <!--Enter Charly-->
+    <!--</button>-->
+
+
+
+
+
+</div>
+
+
+<div id="side-bar">
+
+
+    <ul id="queue">
+
+
+
+        <!--<li class="song">-->
+
+            <!--<img class="artwork" src="img/what_went_down.jpg">-->
+
+            <!--<div class="song-metadata">-->
+                <!--<p class="song-title">London Thunder</p>-->
+
+                <!--<p class="song-artist">Foals</p>-->
+
+                <!--<p class="song-album">What Went Down</p>-->
+
+
+            <!--</div>-->
+
+
+        <!--</li>-->
+
+
+        <!--<li class="song">-->
+
+            <!--<img class="artwork" src="img/in_rainbows.jpg">-->
+
+            <!--<div class="song-metadata">-->
+                <!--<p class="song-title">15 Step</p>-->
+
+                <!--<p class="song-artist">Radiohead</p>-->
+
+                <!--<p class="song-album">In Rainbows</p>-->
+
+            <!--</div>-->
+
+
+        <!--</li>-->
+
+
+        <!--<li class="song">-->
+
+            <!--<img class="artwork" src="img/dark_side_of_the_moon.png">-->
+
+            <!--<div class="song-metadata">-->
+                <!--<p class="song-title">Time</p>-->
+
+                <!--<p class="song-artist">Pink Floyd</p>-->
+
+                <!--<p class="song-album">Dark Side of The Moon</p>-->
+
+            <!--</div>-->
+
+
+        <!--</li>-->
+
+
+    </ul>
+
+    <div id="player">
+
+
+        <div id="audio-player">
+
+            <div id="timeline">
+                <div id="played-audio"></div>
+                <div id="unplayed-audio"></div>
+            </div>
+
+            <div id="audio-controller-container">
+                <div id="audio-controller">
+
+                    <button id="previousButton"/>
+                    <button id="pButton" class="play"/>
+                    <button id="nextButton"/>
+
+                </div>
+
+            </div>
+
+            <div id="song-playing-background">
+            <p id="song-playing">_____</p>
+            </div>
+
+        </div>
+
+
+        <audio id="music" autoplay="autoplay"/>
+
+
+    </div>
+
+
+    <div id="people">
+
+<!---->
+        <ul id="people-list">
+
+
+            <!--<li class="person">-->
+                <!--<p class="person-name">David Azar</p>-->
+            <!--</li>-->
+
+
+            <!--<li class="person">-->
+                <!--<p class="person-name">Carlos Trejo</p>-->
+            <!--</li>-->
+
+
+            <!--<li class="person">-->
+                <!--<p class="person-name">Daniel Castro</p>-->
+            <!--</li>-->
+
+
+        </ul>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+
+</html>
